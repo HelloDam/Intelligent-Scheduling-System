@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: sss-system
+  # 设置不参与热部署的文件或文件夹
+  devtools:
+    restart:
+      # 不需要热部署的文件，修改这些建议重启项目
+      exclude: static/**,public/**,config/application.yml
+      # 打开热部署开关
+      enabled: true
+      additional-paths: src/main/java
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  profiles:
+    # 启动项目所使用的环境
+    #    active: prod
+    #    active: dev
+    active: dam
+
+#hystrix的超时时间，调用远程服务的可接受时间，设置太短的话，调用远程服务很容易报超时异常
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+sss:
+  register:
+    codeExpiration: 100 #注册验证码过期时间

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dam.dao.ShiftUserDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.dam.model.entity.shiftScheduling.ShiftUserEntity" id="shiftUserMap">
+        <result property="id" column="id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="shiftId" column="shift_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="positionId" column="position_id"/>
+    </resultMap>
+    <select id="listUserIdIsBusy" resultType="java.lang.Long">
+        SELECT DISTINCT
+            shift_user.user_id
+        FROM
+            shift_user
+        WHERE
+                shift_user.shift_id NOT IN (
+                SELECT
+                    scheduling_shift.id
+                FROM
+                    scheduling_shift
+                WHERE
+                    ( #{shiftStartDate} > scheduling_shift.end_date )
+                   OR ( scheduling_shift.start_date > #{shiftEndDate} ))
+    </select>
+    <select id="listRelevantUserId" resultType="java.lang.Long">
+        SELECT DISTINCT
+            id
+        FROM
+            shift_user
+        WHERE
+                shift_user.shift_id IN (
+                SELECT
+                    id
+                FROM
+                    scheduling_shift
+                WHERE
+                        scheduling_shift.scheduling_date_id IN ( SELECT id FROM scheduling_date WHERE scheduling_date.task_id = #{taskId} ))
+    </select>
+
+    <select id="listUserIdByWorkDate" resultType="java.lang.Long">
+        SELECT
+            user_id
+        FROM
+            `shift_user`
+        WHERE
+                shift_id IN (
+                SELECT
+                    scheduling_shift.id
+                FROM
+                    scheduling_shift
+                WHERE
+                        scheduling_shift.scheduling_date_id IN (
+                        SELECT
+                            id
+                        FROM
+                            scheduling_date
+                        WHERE
+                            scheduling_date.date = #{workDate}
+                          AND scheduling_date.task_id IN ( SELECT id FROM scheduling_task WHERE scheduling_task.store_id = #{storeId} AND scheduling_task.type = 0 AND scheduling_task.is_publish = 1)
+                    )
+            )
+    </select>
+    <select id="listUserIdByDateSegment" resultType="java.lang.Long">
+        SELECT
+            user_id
+        FROM
+            `shift_user`
+        WHERE
+                shift_id IN (
+                SELECT
+                    scheduling_shift.id
+                FROM
+                    scheduling_shift
+                WHERE
+                        scheduling_shift.scheduling_date_id IN (
+                        SELECT
+                            id
+                        FROM
+                            scheduling_date
+                        WHERE
+                            scheduling_date.date between #{startDate} and #{endDate}
+                          AND scheduling_date.task_id IN ( SELECT id FROM scheduling_task WHERE scheduling_task.store_id = #{storeId} AND scheduling_task.type = 0 AND scheduling_task.is_publish = 1)
+                    )
+            )
+    </select>
+    <select id="listUserIdByDateSegmentAndTaskId" resultType="java.lang.Long">
+        SELECT
+            user_id
+        FROM
+            `shift_user`
+        WHERE
+                shift_id IN (
+                SELECT
+                    scheduling_shift.id
+                FROM
+                    scheduling_shift
+                WHERE
+                        scheduling_shift.scheduling_date_id IN (
+                        SELECT
+                            id
+                        FROM
+                            scheduling_date
+                        WHERE
+                            scheduling_date.date between #{startDate} and #{endDate}
+                          AND scheduling_date.task_id = #{taskId}
+                    )
+            )
+    </select>
+    <select id="listStaffWorkDtoByWorkDate" resultType="com.dam.model.entity.shiftScheduling.ShiftUserEntity">
+        SELECT
+            *
+        FROM
+            `shift_user`
+        WHERE
+                shift_id IN (
+                SELECT
+                    scheduling_shift.id
+                FROM
+                    scheduling_shift
+                WHERE
+                        scheduling_shift.scheduling_date_id IN (
+                        SELECT
+                            id
+                        FROM
+                            scheduling_date
+                        WHERE
+                            scheduling_date.date = #{workDate}
+                          AND scheduling_date.task_id IN ( SELECT id FROM scheduling_task WHERE scheduling_task.store_id = #{storeId} AND scheduling_task.type = 0 AND scheduling_task.is_publish = 1)
+                    )
+            )
+    </select>
+    <select id="listUnAssignedShiftIdByDateId" resultType="java.lang.Long">
+        SELECT
+            scheduling_shift.id
+        FROM
+            scheduling_shift
+        WHERE
+            scheduling_shift.scheduling_date_id = #{dateId} and (select count(*) from shift_user where shift_user.shift_id = scheduling_shift.id)=0
+    </select>
+    <select id="listUserIdByShiftIdList" resultType="java.lang.Long">
+        SELECT DISTINCT
+            user_id
+        FROM
+            `shift_user`
+        WHERE
+            shift_id IN
+        <foreach collection="shiftIdList" item="shiftId" separator="," open="(" close=")">
+            #{shiftId}
+        </foreach>
+    </select>
+    <select id="getAssignedNum" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM shift_user
+        WHERE shift_id IN
+        <foreach collection="shiftIdList" item="shiftId" separator="," open="(" close=")">
+            #{shiftId}
+        </foreach>
+        AND is_deleted = 0;
+    </select>
+
+
+</mapper>

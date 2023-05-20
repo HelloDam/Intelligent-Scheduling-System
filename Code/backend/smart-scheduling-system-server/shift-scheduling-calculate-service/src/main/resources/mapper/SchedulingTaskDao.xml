@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dam.dao.SchedulingTaskDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.dam.model.entity.shiftScheduling.SchedulingTaskEntity" id="schedulingTaskMap">
+        <result property="id" column="id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="name" column="name"/>
+        <result property="totalminute" column="totalMinute"/>
+        <result property="status" column="status"/>
+        <result property="schedulingRuleId" column="scheduling_rule_id"/>
+        <result property="storeId" column="store_id"/>
+        <result property="duration" column="duration"/>
+        <result property="intervalc" column="intervalC"/>
+        <result property="datevolist" column="dateVoList"/>
+        <result property="result" column="result"/>
+    </resultMap>
+
+    <select id="listDataVo" resultType="com.dam.model.vo.DateVo">
+        SELECT DISTINCT
+            create_time,
+            DATE_FORMAT(create_time, '%Y') as year,
+            DATE_FORMAT(create_time, '%m') as month,
+            DATE_FORMAT(create_time, '%d') as day
+        FROM
+            scheduling_task
+        WHERE
+            store_id = #{storeId}
+        ORDER BY create_time asc
+    </select>
+    <select id="selectMaxEndDate" resultType="com.dam.model.entity.shiftScheduling.SchedulingTaskEntity">
+        SELECT * FROM scheduling_task WHERE store_id = #{storeId} AND end_date =( SELECT max( end_date ) FROM scheduling_task WHERE store_id = #{storeId} )
+            LIMIT 1;
+    </select>
+
+</mapper>

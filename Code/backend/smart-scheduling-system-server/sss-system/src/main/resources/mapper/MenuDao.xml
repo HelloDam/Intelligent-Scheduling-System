@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dam.dao.MenuDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.dam.model.entity.system.MenuEntity" id="menuMap">
+        <result property="id" column="id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="path" column="path"/>
+        <result property="component" column="component"/>
+        <result property="perms" column="perms"/>
+        <result property="icon" column="icon"/>
+        <result property="sort" column="sort"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="findListByUserId" resultMap="menuMap">
+        select
+        *
+        from menu menuSheet
+        inner join role_menu roleMenuSheet on roleMenuSheet.menu_id = menuSheet.id
+        inner join user_role userRoleSheet on userRoleSheet.role_id = roleMenuSheet.role_id
+        where
+        userRoleSheet.user_id = #{userId}
+        and menuSheet.status = 0
+        and userRoleSheet.is_deleted = 0
+        and roleMenuSheet.is_deleted = 0
+        and menuSheet.is_deleted = 0
+    </select>
+
+</mapper>

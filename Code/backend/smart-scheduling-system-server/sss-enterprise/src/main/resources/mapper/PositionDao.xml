@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dam.dao.PositionDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.dam.model.entity.enterprise.PositionEntity" id="positionMap">
+        <result property="id" column="id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="name" column="name"/>
+        <result property="storeId" column="store_id"/>
+        <result property="parentId" column="parent_id"/>
+    </resultMap>
+
+    <select id="listAllSonPosition" resultType="com.dam.model.entity.enterprise.PositionEntity">
+        SELECT
+            *
+        FROM
+            position a
+        WHERE
+                ( SELECT count(*) FROM position b WHERE b.parent_id = a.id AND b.is_deleted = 0 )= 0
+          AND a.store_id = #{storeId}
+          AND a.is_deleted = 0
+    </select>
+
+</mapper>

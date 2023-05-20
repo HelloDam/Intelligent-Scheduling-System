@@ -1,0 +1,4 @@
+.chartStyle {
+    width: 100%;
+    height: calc((100vh - 194px - 80px) / 3 - 30px);
+}
