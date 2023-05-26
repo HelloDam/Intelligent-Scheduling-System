@@ -22,7 +22,14 @@
 #### 使用说明
 关于项目文件结构说明、启动说明、环境说明……，请查看下面文章
 
-- 开源说明文章：https://blog.csdn.net/laodanqiu/article/details/130762971?spm=1001.2014.3001.5501
+- 开源说明文章：https://blog.csdn.net/laodanqiu/article/details/130762971
+- 技术选型与工具版本：https://blog.csdn.net/laodanqiu/article/details/130774792
+- 数据库设计：https://blog.csdn.net/laodanqiu/article/details/130772798
+- 系统功能介绍、操作说明（一）：https://blog.csdn.net/laodanqiu/article/details/130772663
+- 系统功能介绍、操作说明（二）：https://blog.csdn.net/laodanqiu/article/details/130890043
+- 系统功能介绍、操作说明（三）：https://blog.csdn.net/laodanqiu/article/details/130890625
+- 管理系统部署上线：https://blog.csdn.net/laodanqiu/article/details/130359161
+
 #### 系统页面
 ![输入图片说明](Picture/%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2.png)
 ![输入图片说明](Picture/%E4%BC%81%E4%B8%9A%E6%B3%A8%E5%86%8C%E9%A1%B5%E9%9D%A2.png)
