@@ -13,16 +13,6 @@
     <artifactId>shift-scheduling-calculate</artifactId>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>cplex</groupId>-->
-<!--            <artifactId>cplex</artifactId>-->
-<!--            <version>12.6.3</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>cplex</groupId>
-            <artifactId>cplex</artifactId>
-            <version>12.8.0</version>
-        </dependency>
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-core</artifactId>
