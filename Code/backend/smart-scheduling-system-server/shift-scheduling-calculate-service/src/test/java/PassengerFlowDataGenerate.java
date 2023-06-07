@@ -73,8 +73,8 @@ public class PassengerFlowDataGenerate {
 //        String startDateStr = "2023-3-1";
 //        String endDateStr = "2023-3-31";
 
-        String startDateStr = "2023-4-1";
-        String endDateStr = "2023-4-30";
+//        String startDateStr = "2023-4-1";
+//        String endDateStr = "2023-4-30";
 
 //        String startDateStr = "2023-5-1";
 //        String endDateStr = "2023-5-31";
@@ -85,8 +85,8 @@ public class PassengerFlowDataGenerate {
 //        String startDateStr = "2023-7-1";
 //        String endDateStr = "2023-7-31";
 //
-//        String startDateStr = "2023-8-1";
-//        String endDateStr = "2023-8-31";
+        String startDateStr = "2023-8-1";
+        String endDateStr = "2023-8-31";
 //
 //        String startDateStr = "2023-9-1";
 //        String endDateStr = "2023-9-30";
@@ -110,7 +110,7 @@ public class PassengerFlowDataGenerate {
 
 //        String filePath = "D:\\Projects\\damFile\\SmartSchedulingSystem\\smart-scheduling-system\\数据\\客流量数据\\" + fileName;
         //魏谦
-        String filePath = "D:\\Projects\\damFile\\SmartSchedulingSystem\\smart-scheduling-system\\数据\\客流量数据\\" + fileName;
+        String filePath = "D:\\Projects\\intelligent-scheduling-system\\Code\\backend\\smart-scheduling-system-server\\file\\data\\客流量数据\\" + fileName;
         File file = new File(filePath);
         if (!file.exists()) {
             file.mkdirs();

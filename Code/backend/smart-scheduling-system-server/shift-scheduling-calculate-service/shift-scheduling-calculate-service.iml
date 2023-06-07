@@ -142,7 +142,6 @@
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.1.13.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: eu.bitwalker:UserAgentUtils:1.21" level="project" />
     <orderEntry type="module" module-name="shift-scheduling-calculate" />
-    <orderEntry type="library" name="Maven: cplex:cplex:12.8.0" level="project" />
     <orderEntry type="library" name="Maven: org.jgrapht:jgrapht-core:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.jheaps:jheaps:0.11" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.springframework.boot:spring-boot-starter-web:2.1.18.RELEASE" level="project" />

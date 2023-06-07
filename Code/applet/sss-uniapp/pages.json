@@ -1,0 +1,115 @@
+{
+	"pages": [{
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarTitleText": "uni-app",
+			"navigationStyle": "custom"
+		}
+	}    ,{
+            "path" : "pages/schedule/schedule",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "navigationBarTextStyle": "black",
+                "enablePullDownRefresh": false,
+                "navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/my",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/setting/setting",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/userinfo/userinfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/workperfer/workperfer",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/resetPwd/resetPwd",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#4d7eeb",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		},
+		"usingComponents": {
+			"van-toast": "/wxcomponents/vant/dist/toast/index",
+			"van-field": "/wxcomponents/vant/dist/field/index",
+			"van-cell": "/wxcomponents/vant/dist/cell/index",
+			"van-cell-group": "/wxcomponents/vant/dist/cell-group/index",
+			"van-icon": "/wxcomponents/vant/dist/icon/index",
+			"van-button": "/wxcomponents/vant/dist/button/index",
+			"van-radio": "/wxcomponents/vant/dist/radio/index",
+			"van-radio-group": "/wxcomponents/vant/dist/radio-group/index",
+			"van-collapse": "/wxcomponents/vant/dist/collapse/index",
+			"van-collapse-item": "/wxcomponents/vant/dist/collapse-item/index",
+			"van-row": "/wxcomponents/vant/dist/row/index",
+			"van-col": "/wxcomponents/vant/dist/col/index",
+			"van-datetime-picker": "/wxcomponents/vant/dist/datetime-picker/index",
+			"van-popup": "/wxcomponents/vant/dist/popup/index",
+			"van-divider": "/wxcomponents/vant/dist/divider/index",
+			"van-dialog": "/wxcomponents/vant/dist/dialog/index"
+		}
+	},
+	"tabBar": {
+		"selectedColor": "#4d7eeb",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/tab_icons/calendar.png",
+				"selectedIconPath": "static/tab_icons/calendar_active.png"
+			},
+			{
+				"pagePath": "pages/schedule/schedule",
+				"text": "日程表",
+				"iconPath": "static/tab_icons/calendar.png",
+				"selectedIconPath": "static/tab_icons/calendar_active.png"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"text": "我的",
+				"iconPath": "static/tab_icons/user.png",
+				"selectedIconPath": "static/tab_icons/user_active.png"
+			}
+		]
+	}
+}
