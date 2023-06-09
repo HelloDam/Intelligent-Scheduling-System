@@ -24,6 +24,8 @@
 
 - 开源说明文章：https://blog.csdn.net/laodanqiu/article/details/130762971
 - 技术选型与工具版本：https://blog.csdn.net/laodanqiu/article/details/130774792
+- web前端/小程序结构介绍+开发环境介绍+项目启动：https://blog.csdn.net/laodanqiu/article/details/131071836
+- 后端项目结构介绍+开发环境介绍+项目启动：https://blog.csdn.net/laodanqiu/article/details/130779899
 - 数据库设计：https://blog.csdn.net/laodanqiu/article/details/130772798
 - 系统功能介绍、操作说明（一）：https://blog.csdn.net/laodanqiu/article/details/130772663
 - 系统功能介绍、操作说明（二）：https://blog.csdn.net/laodanqiu/article/details/130890043
