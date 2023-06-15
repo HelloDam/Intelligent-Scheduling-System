@@ -402,7 +402,6 @@
 				schedulingshiftApi.getWeekShiftListOfUser(startDateStr, endDateStr)
 					.then((res) => {
 						console.log(res)
-
 						this.earliestStartTime = res.earliestStartTime
 						this.latestEndTime = res.latestEndTime
 						this.earliestAndLatestOffset = res.earliestAndLatestOffset

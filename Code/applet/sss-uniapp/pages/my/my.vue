@@ -31,7 +31,7 @@
 
 				</view>
 			</view>
-<!-- 			<view v-if="user!=''" class="staticDataBox">
+			<!-- 			<view v-if="user!=''" class="staticDataBox">
 				<view style="display: flex;flex-direction: column;align-items: center;">
 					<view><text>16</text></view>
 					<view><text>本月工作日数</text></view>
@@ -333,7 +333,7 @@
 								// error
 								console.log('error')
 							}
-						} else if (res.data.code == 204) {
+						} else if (res.code == 204) {
 							console.log('验证码错误')
 							Toast({
 								type: 'fail',
@@ -371,10 +371,10 @@
 				const token = uni.getStorageSync('user')
 
 				userApi.getUserInfoVoByToken().then((res) => {
-					console.log(res)
+					console.log("getUserInfoVoByToken：" + JSON.stringify(res))
 					this.userinfo = res.userInfoVo
 					uni.setStorageSync('userinfo', res.userInfoVo)
-					console.log('userinfo:' + JSON.stringify(this.userinfo))
+					// console.log('userinfo:' + JSON.stringify(this.userinfo))
 				}).catch(() => {
 
 				})
