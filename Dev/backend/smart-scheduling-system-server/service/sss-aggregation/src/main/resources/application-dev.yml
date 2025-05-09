@@ -1,0 +1,74 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3308/smart_scheduling_system?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 12345678
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 12345678
+    database: 0
+    timeout: 1800000
+    jedis:
+      pool:
+        max-active: 20 #最大连接数
+        max-wait: -1    #最大阻塞等待时间(负数表示没限制)
+        max-idle: 5    #最大空闲
+        min-idle: 0     #最小空闲
+  rabbitmq:
+    # 虚拟机
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        #        开启消息手动确认机制（手动Ack），避免消息自动确认而丢失
+        acknowledge-mode: manual
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8333
+        port: 8719
+    # oss配置
+    alicloud:
+      access-key:
+      secret-key:
+      oss:
+        endpoint:
+        bucket:
+
+  # 链路追踪
+#  zipkin:
+#    base-url: http://127.0.0.1:9411/
+#    discovery-client-enabled: false
+#    sender:
+#      type: web
+#  sleuth:
+#    sampler:
+#      probability: 1
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          openfeign: debug
+          # 链路最终控制台输出
+          sleuth: debug
+# 线程池设置
+sss:
+  thread:
+    core-size: 20
+    max-size: 200
+    keep-alive-time: 10
+#微信登录（感谢尚硅谷的app_id和app_secret）
+wx:
+  open:
+    app_id: wxed9954c01bb89b47
+    app_secret: a7482517235173ddb4083788de60b90e
+    redirect_url: http://localhost:8160/api/ucenter/wx/callback

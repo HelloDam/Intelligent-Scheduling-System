@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dam.dao.SchedulingRuleDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.dam.model.entity.enterprise.SchedulingRuleEntity" id="schedulingRuleMap">
+        <result property="id" column="id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="storeId" column="store_id"/>
+        <result property="storeWorkTimeFrame" column="store_work_time_frame"/>
+        <result property="mostWorkHourInOneDay" column="most_work_hour_in_one_day"/>
+        <result property="mostWorkHourInOneWeek" column="most_work_hour_in_one_week"/>
+        <result property="maximumContinuousWorkTime" column="maximum_continuous_work_time"/>
+        <result property="openStoreRule" column="open_store_rule"/>
+        <result property="closeStoreRule" column="close_store_rule"/>
+        <result property="noPassengerRule" column="no_passenger_rule"/>
+        <result property="minimumShiftNumInOneDay" column="minimum_shift_num_in_one_day"/>
+        <result property="normalShiftRule" column="normal_shift_rule"/>
+        <result property="lunchTimeRule" column="lunch_time_rule"/>
+        <result property="dinnerTimeRule" column="dinner_time_rule"/>
+        <result property="ruleType" column="rule_type"/>
+    </resultMap>
+
+
+</mapper>

@@ -1,0 +1,32 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 让gateway根据注册中心找到其他服务
+          enabled: true
+      routes:
+        - id: system_route
+          uri: lb://sss-system
+          predicates:
+            - Path=/system/**
+
+        - id: enterprise_route
+          uri: lb://sss-enterprise
+          predicates:
+            - Path=/enterprise/**
+
+        - id: third_party_route
+          uri: lb://sss-third-party
+          predicates:
+            - Path=/thirdParty/**
+
+        - id: shiftSchedulingCalculate_route
+          uri: lb://shift-scheduling-calculate-service
+          predicates:
+            - Path=/scheduling/**
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+server:
+  port: 6001

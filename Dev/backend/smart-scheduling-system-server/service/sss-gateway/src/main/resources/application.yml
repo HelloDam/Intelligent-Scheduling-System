@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: sss-gateway
+  profiles:
+    # 启动项目所使用的环境
+    #    active: prod
+    active: dam
+#    active: aggregation
+
